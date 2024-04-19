@@ -1,7 +1,7 @@
 export default ({ config }) => ({
   ...config,
-  name: "exponativewindtemplatestorybook",
-  slug: "expo-template-blank-typescript",
+  name: "Eduth",
+  slug: "eduth",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -29,4 +29,12 @@ export default ({ config }) => ({
   web: {
     favicon: "./assets/favicon.png",
   },
+  plugins: [
+    [
+      "expo-font",
+      {
+        fonts: ["./assets/fonts/DMSerifDisplay-Regular.ttf"]
+      }
+    ]
+  ]
 });

@@ -1,30 +1,26 @@
-import { StyleSheet, Text, View } from "react-native";
-import Constants from "expo-constants";
-
-// Import your global CSS file
 import "./global.css";
+import "react-native-reanimated";
+import "react-native-gesture-handler";
+import Constants from "expo-constants";
+import Navigation from "./app/navigation";
+import { AuthProvider } from "./providers/AuthContext";
+import { useFonts } from "expo-font";
 
 function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+	const [fontsLoaded] = useFonts({
+		DMSerifDisplay: require("./assets/fonts/DMSerifDisplay-Regular.ttf"),
+	});
+	return (
+		<AuthProvider>
+			<Navigation />
+		</AuthProvider>
+	);
 }
 
 let AppEntryPoint = App;
 
 if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
-  AppEntryPoint = require("./.ondevice").default;
+	AppEntryPoint = require("./.ondevice").default;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default AppEntryPoint;
